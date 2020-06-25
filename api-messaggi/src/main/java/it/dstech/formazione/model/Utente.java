@@ -1,10 +1,12 @@
 package it.dstech.formazione.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -13,8 +15,9 @@ public class Utente {
 	private String nickname;
 	private String nome;
 	private String cognome;
-	@OneToMany(fetch = FetchType.EAGER)
-	private List<Messaggio> listaMessaggi;
+	@OneToMany
+	@JoinColumn(name = "utente_id")
+	private List<Messaggio> listaMessaggi = new ArrayList<>();
 	
 	
 	

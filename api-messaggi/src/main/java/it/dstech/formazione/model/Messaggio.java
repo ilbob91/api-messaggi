@@ -19,8 +19,8 @@ public class Messaggio {
 private Long id;
 @ManyToOne
 private Utente userSend;
-@ManyToOne
-private Utente userReceive;
+private String iDuserReceive;
+private int tipo;
 private String message;
 private LocalDateTime timestamp;
 
@@ -30,17 +30,25 @@ public Long getId() {
 public void setId(Long id) {
 	this.id = id;
 }
+
+
+public String getiDuserReceive() {
+	return iDuserReceive;
+}
+public void setiDuserReceive(String iDuserReceive) {
+	this.iDuserReceive = iDuserReceive;
+}
 public Utente getUserSend() {
 	return userSend;
 }
 public void setUserSend(Utente userSend) {
 	this.userSend = userSend;
 }
-public Utente getUserReceive() {
-	return userReceive;
+public int getTipo() {
+	return tipo;
 }
-public void setUserReceive(Utente userReceive) {
-	this.userReceive = userReceive;
+public void setTipo(int tipo) {
+	this.tipo = tipo;
 }
 public String getMessage() {
 	return message;

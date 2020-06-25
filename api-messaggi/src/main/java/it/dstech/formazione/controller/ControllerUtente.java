@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.dstech.formazione.model.Messaggio;
+import it.dstech.formazione.model.Richiesta;
 import it.dstech.formazione.model.Utente;
 import it.dstech.formazione.service.MessaggioServiceDAO;
 import it.dstech.formazione.service.UtenteServiceDAO;
@@ -38,8 +39,8 @@ public boolean removeUtente(@RequestBody Utente u) {
 }
 
 @RequestMapping(value = ("/messaggio"), method = RequestMethod.POST)
-public List<Messaggio> getMessaggiRicevuti(@RequestBody String nick, @RequestBody String tipo) {
-	return utenteDao.get(nick, tipo);
+public List<Messaggio> getMessaggiRicevuti(@RequestBody Richiesta richiesta) {
+	return utenteDao.get(richiesta);
 }
 
 @RequestMapping(value = ("/add"), method = RequestMethod.POST)

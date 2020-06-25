@@ -22,15 +22,22 @@ private UtenteRepository utenteRepo;
 public Messaggio add(Messaggio t) {
 
 	t.setTimestamp(LocalDateTime.now());
-	repo.save(t);
+	Messaggio salvato = repo.save(t);
 	Utente sender = utenteRepo.findById(t.getUserSend().getNickname()).get();
-	Utente receiver = utenteRepo.findById(t.getUserReceive().getNickname()).get();
-	sender.getListaMessaggi().add(t);
-	receiver.getListaMessaggi().add(t);
+	Utente receiver = utenteRepo.findById(t.getiDuserReceive()).get();
+	sender.getListaMessaggi().add(salvato);
 	utenteRepo.save(sender);
+	Messaggio m = new Messaggio();
+	m.setTipo(1);
+	m.setiDuserReceive(salvato.getiDuserReceive());
+	m.setMessage(salvato.getMessage());
+	m.setUserSend(salvato.getUserSend());
+	m.setTimestamp(salvato.getTimestamp());
+	repo.save(m);
+	receiver.getListaMessaggi().add(m);
 	utenteRepo.save(receiver);
 	
-	return t;
+	return salvato;
 }
 
 @Override
