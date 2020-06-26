@@ -9,12 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Utente {
 	@Id
 	private String nickname;
 	private String nome;
 	private String cognome;
+	@JsonIgnore
 	@OneToMany
 	@JoinColumn(name = "utente_id")
 	private List<Messaggio> listaMessaggi = new ArrayList<>();
