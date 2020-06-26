@@ -56,5 +56,10 @@ public class ControllerUtente {
 	public Messaggio addNewMessaggio(@ApiParam(value = "Gli viene passato un oggetto di tipo Messaggio", name = "messaggio")@RequestBody Messaggio m) {
 		return messaggioDao.add(m);
 	}
-
+	@RequestMapping(value = ("/modifica"), method = RequestMethod.PUT)
+	@ApiOperation(value = "Modifica un utente", notes = "Con questa chiamata modificheremo un utente nel sistema")
+	public boolean modificaUtente(
+			@ApiParam(value = "Gli viene passato un oggetto di tipo Utente", name = "utente") @RequestBody Utente u) {
+		return utenteDao.add(u);
+	}
 }

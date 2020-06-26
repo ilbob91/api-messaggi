@@ -19,4 +19,5 @@ public interface UtenteServiceDAO {
 	List<Messaggio> get(Richiesta r);
 
 	
+	
 }
